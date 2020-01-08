@@ -1,23 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
+import { render } from "react-dom";
 
-import PokemonList from "./components/pokemon/PokemonList";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import Dashboard from "./components/pokemon/Dashboard";
 import "./index.css";
 
-export default class App extends Component {
+export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <h1>Welcome to PokeDex Mini</h1>
-        </header>
+        <Header />
 
-        <main>
-          <PokemonList />
-        </main>
+        <Dashboard />
 
-        <footer>
-          <p>Created by Fredrik Hallén.</p>
-        </footer>
+        <Footer />
+
       </div>
     );
   }

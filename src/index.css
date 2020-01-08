@@ -1,11 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Merriweather|Source+Sans+Pro&display=swap");
-
 body {
   font-size: 16px;
   font-weight: 300;
   background: #dfdfd7;
-  font-family: "Source Sans Pro", sans-serif;
-}
+  font-family: "Source Sans Pro", sans-serif; }
 
 p,
 p.x-small,
@@ -17,8 +15,7 @@ a {
   font-weight: 400;
   font-style: normal;
   word-spacing: 0.1em;
-  letter-spacing: 0.01em;
-}
+  letter-spacing: 0.01em; }
 
 p.small,
 .small,
@@ -29,14 +26,12 @@ p.small,
   font-style: normal;
   letter-spacing: 0.02em;
   word-spacing: 0.1em;
-  letter-spacing: 0.01em;
-}
+  letter-spacing: 0.01em; }
 
 p.x-small {
   font-size: 0.694em !important;
   font-style: normal;
-  letter-spacing: 0.03em;
-}
+  letter-spacing: 0.03em; }
 
 h1,
 h2,
@@ -44,58 +39,49 @@ h3 {
   font-family: "Merriweather", serif;
   margin: 0.4em 0 0.3em 0;
   font-weight: inherit;
-  line-height: 1.2;
-}
+  line-height: 1.2; }
 
 h1 {
   font-size: 1.953em;
   font-style: normal;
-  letter-spacing: 0.04em;
-}
+  letter-spacing: 0.04em; }
 
 h2 {
   font-size: 1.563em;
   font-style: normal;
-  letter-spacing: 0.02em;
-}
+  letter-spacing: 0.02em; }
 
 h3 {
   font-size: 1.363em;
   font-style: normal;
-  letter-spacing: 0.01em;
-}
+  letter-spacing: 0.01em; }
 
 a,
 a:active,
 a:visited {
   color: #151515;
-  outline: none;
-}
+  outline: none; }
 
 header {
   padding-top: 2em;
   height: 5em;
-  text-align: center;
-}
-header h1 {
-  margin-top: 0;
-}
+  text-align: center; }
+  header h1 {
+    margin-top: 0; }
 
 footer {
   font-size: 0.8em;
   height: 2em;
   margin-top: 5em;
   text-align: center;
-  color: #a2b1a9;
-}
+  color: #a2b1a9; }
 
 .PokemonList {
   display: -ms-grid;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   grid-gap: 25px;
-  justify-items: center;
-}
+  justify-items: center; }
 
 .PokemonCardOuter {
   background: #f1f1ed;
@@ -104,8 +90,7 @@ footer {
   padding: 20px;
   border-radius: 15px;
   -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-}
+  -moz-border-radius: 15px; }
 
 .PokemonCardInner {
   background: -webkit-linear-gradient(315deg, #dfdfd7 30%, #62c499 100%);
@@ -116,8 +101,7 @@ footer {
   padding: 20px;
   border-radius: 15px;
   -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-}
+  -moz-border-radius: 15px; }
 
 .HeroWrapper {
   width: 100%;
@@ -130,11 +114,9 @@ footer {
   -webkit-box-align: center;
   display: box;
   box-pack: center;
-  box-align: center;
-}
-.HeroWrapper h1 {
-  text-align: center;
-}
+  box-align: center; }
+  .HeroWrapper h1 {
+    text-align: center; }
 
 .PokemonHeroOuter {
   background-color: #f1f1ed;
@@ -142,63 +124,52 @@ footer {
   padding: 20px;
   border-radius: 15px;
   -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-}
+  -moz-border-radius: 15px; }
 
 .PokemonHeroInner {
-  background: -webkit-linear-gradient(315deg, #f2cd48 0%, #fd803f 100%);
-  background: -o-linear-gradient(315deg, #f2cd48 0%, #fd803f 100%);
-  background: linear-gradient(135deg, #f2cd48 0%, #fd803f 100%);
+  background: -webkit-linear-gradient(315deg, #F2CD48 0%, #FD803F 100%);
+  background: -o-linear-gradient(315deg, #F2CD48 0%, #FD803F 100%);
+  background: linear-gradient(135deg, #F2CD48 0%, #FD803F 100%);
   width: 270px;
   padding: 20px;
   border-radius: 15px;
   -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-}
+  -moz-border-radius: 15px; }
 
 .CardShadow {
   box-shadow: 0px 14px 18px 0px rgba(50, 50, 50, 0.22);
   -webkit-box-shadow: 0px 14px 18px 0px rgba(50, 50, 50, 0.22);
-  -moz-box-shadow: 0px 14px 18px 0px rgba(50, 50, 50, 0.22);
-}
+  -moz-box-shadow: 0px 14px 18px 0px rgba(50, 50, 50, 0.22); }
 
 .CenterHero {
   margin: 0 auto;
-  width: 270px;
-}
+  width: 270px; }
 
 .Center {
   margin: 0 auto;
-  width: 210px;
-}
+  width: 210px; }
 
 .ImgContainerHero {
   float: left;
-  width: 135px;
-}
-.ImgContainerHero img {
-  width: 100%;
-}
+  width: 135px; }
+  .ImgContainerHero img {
+    width: 100%; }
 
 .ImgContainer {
   width: 135px;
   display: block;
-  margin: 0 auto;
-}
-.ImgContainer img {
-  width: 100%;
-}
+  margin: 0 auto; }
+  .ImgContainer img {
+    width: 100%; }
 
 .Clearfix:after {
   content: "";
   clear: both;
-  display: table;
-}
+  display: table; }
 
 .PokemonCardInner h1,
 .PokemonCardInner h3,
 .PokemonHeroInner h1,
 .PokemonHeroInner h3 {
   text-align: center;
-  padding-bottom: 1em;
-}
+  padding-bottom: 1em; }

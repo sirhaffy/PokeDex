@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
+import { render } from "react-dom";
 import axios from "axios";
+
 import PokemonCard from "./PokemonCard";
 import PokemonHero from "./PokemonHero";
 
