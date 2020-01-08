@@ -6,12 +6,6 @@ import CardHero from "./CardHero";
 
 export default class Dashboard extends React.Component {
 
-changeCard = (event) => { // If I want to access this in a constructor.
-  // 1. Stop the form from submitting.
-  event.preventDefault();
-  // 2. Get the
-}
-
   render() {
     return (
       

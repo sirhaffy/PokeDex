@@ -1,18 +1,12 @@
 import React from "react";
 import { render } from "react-dom";
 
-function handleClick(event) {
-  event.preventDefault();
-  console.log('The link was clicked.');
-}
-
 export default class CardHero extends React.Component {
-
   
 
   render() {
     return (
-      <div className="PokemonHeroOuter CardShadow" onClick={handleClick}>
+      <div className="PokemonHeroOuter CardShadow">
         <div className="PokemonHeroInner">
           <div className="CenterHero Clearfix">
             <div className="ImgContainerHero">
