@@ -7,6 +7,7 @@ import Dashboard from "./components/pokemon/Dashboard";
 import "./index.css";
 
 export default class App extends React.Component {
+
   render() {
     return (
       <div className="App">

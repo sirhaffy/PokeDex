@@ -4,20 +4,24 @@ import axios from "axios";
 
 export default class CardSmall extends React.Component {
 
-  constructor(props) {
+  constructor(props) { // Runs before the component when component loaded.
     super(props);
 
     // This binding is necessary to make this work in the callback.
-    this.handleClick = this.handleClick.bind(this);
+    this.cardClicked = this.cardClicked.bind(this);''
   }
 
-  handleClick() {
-    alert('Change the Pokemon !');
+  // How to get this to get the data from the clicked card? And the send it to changePokemonCard.
+  cardClicked() {
+    alert('Change the Pokemon !'); 
   }
+
+  // Send the selected data to the Hero Card. Need an event?
+  this.props.changePokemonCard(cardClicked);
 
   render() {
     return (
-      <div className="PokemonCardOuter CardShadow" onClick={this.handleClick}>
+      <div className="PokemonCardOuter CardShadow" onClick={this.cardClicked}>
         <div className="PokemonCardInner">
           <div className="Center Clearfix">
             <div className="ImgContainer">
