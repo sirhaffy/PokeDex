@@ -103,32 +103,3 @@ export default class Dashboard extends React.Component {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-<React.Fragment>
-{this.state.pokemon ? ( // (IF) : (Else)
-  <div className="PokemonList">
-    {this.state.pokemon.map((
-      pokemon //map allows us to take out a single object from an array.
-    ) => (
-      <PokemonCard
-        key={pokemon.name}
-        name={pokemon.name}
-        url={pokemon.url}
-        image={pokemon.image}
-        image={pokemon.moves}
-      />
-    ))}
-  </div>
-) : (
-  <h1> Loading pokemons...</h1>
-)}
-</React.Fragment>
