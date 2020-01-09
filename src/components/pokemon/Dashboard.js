@@ -10,11 +10,9 @@ export default class Dashboard extends React.Component {
     super(props);
 
     this.state = {
-      url: `https://pokeapi.co/api/v2/pokemon/`,
       pokemon: null,
       error: null,
       isLoaded: false,
-      results: []
     };
 
     // This binding is necessary to make this work in the callback.
@@ -23,14 +21,18 @@ export default class Dashboard extends React.Component {
 
   componentDidMount() { // Runs after component had loaded.
 
-    fetch('url')
+    fetch("https://pokeapi.co/api/v2/pokemon/")
       .then(blob => blob.json())
-      .then(data => {
+      .then(
+        (rawData) => {
         this.setState({ 
-          pokemon: data["results"] 
+          pokemonName: rawData.name,
+          pokemonWeight: rawData.weight,
         });
 
       },
+
+      console.log(pokemonName);
 
       (error) => {
         this.setState({
