@@ -24,7 +24,7 @@ export default class Dashboard extends React.Component {
   };
 
   // This gets data from CardSmall Clicked card to pokemon and prints Changing card !
-  changePokemon = selectedPokemon => {
+  createPokemon = selectedPokemon => {
 
     // 1. Take a copy of the existing state
     const pokemon = { ...this.state.pokemonMultiSelected };

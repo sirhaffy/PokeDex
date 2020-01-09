@@ -12,11 +12,11 @@ export default class CardSmall extends React.Component {
 
   // How to get this to get the data from the clicked card? And the send it to changePokemonCard.
   cardClicked() {
-    
+
     alert('Change the Pokemon !');
     
       // This is the PokemonChange.
-      createPokemon = event => {
+      changePokemon = event => {
         // Stop the form from submitting
         event.preventDefault();
           const selectedPokemon = {
