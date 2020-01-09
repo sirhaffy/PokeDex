@@ -3,13 +3,15 @@ import { render } from "react-dom";
 
 import CardSmall from "./CardSmall";
 import CardHero from "./CardHero";
-
+ 
 export default class Dashboard extends React.Component {
 
   constructor(props) { // Runs before the component is loaded.
     super(props);
 
     this.state = {
+      url: `https://pokeapi.co/api/v2/pokemon/`,
+      pokemon: null,
       error: null,
       isLoaded: false,
       results: []
@@ -21,22 +23,22 @@ export default class Dashboard extends React.Component {
 
   componentDidMount() { // Runs after component had loaded.
 
-    fetch('https://pokeapi.co/api/v2/pokemon/')
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            results: result.results
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
+    fetch('url')
+      .then(blob => blob.json())
+      .then(data => {
+        this.setState({ 
+          pokemon: data["results"] 
+        });
+
+      },
+
+      (error) => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
+      }
+    )
   };
 
 
