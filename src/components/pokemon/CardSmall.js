@@ -1,9 +1,14 @@
-import React from "react";
-import { render } from "react-dom";
+import React from 'react';
 
 export default class CardSmall extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(props)
+  }
 
   render() {
+    const { data } = this.props;
+
     return (
       <div className="PokemonCardOuter CardShadow" onClick={this.props.cardClicked}>
         <div className="PokemonCardInner">
@@ -13,16 +18,17 @@ export default class CardSmall extends React.Component {
             </div>
           </div>
 
-          <h3>Pokemon Name</h3>
+          <h3>{data.name}</h3>
 
           <p>
-            <b>Abilities:</b> 
+            <b>Abilities: {data.abilities}</b>
           </p>
 
           <p>
-            <b>Types:</b> 
+            <b>Types: {data.types}</b> 
           </p>
-
+          
+          {/*<pre><code>{JSON.stringify(this.props, null, 2)}</code></pre>*/}
         </div>
       </div>
     );

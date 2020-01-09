@@ -2,9 +2,15 @@ import React from "react";
 import { render } from "react-dom";
 
 export default class CardHero extends React.Component {
-  
+  constructor(props) {
+    super(props);
+    console.log(props)
+  }
 
   render() {
+
+    const { data } = this.props;
+
     return (
       <div className="PokemonHeroOuter CardShadow">
         <div className="PokemonHeroInner">

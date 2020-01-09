@@ -1,87 +1,84 @@
-import React from "react";
-import { render } from "react-dom";
-
+import React, { Component } from 'react';
 import CardSmall from "./CardSmall";
 import CardHero from "./CardHero";
- 
-export default class Dashboard extends React.Component {
 
-  constructor(props) { // Runs before the component is loaded.
+export default class Dashboard extends Component {
+  constructor(props) { 
     super(props);
-
     this.state = {
-      pokemon: null,
       error: null,
       isLoaded: false,
+      pokemons: [],
     };
 
     // This binding is necessary to make this work in the callback.
     this.cardClicked = this.cardClicked.bind(this);
   };
 
-  componentDidMount() { // Runs after component had loaded.
+  componentDidMount() {
 
-    fetch("https://pokeapi.co/api/v2/pokemon/")
-      .then(blob => blob.json())
-      .then(
-        (rawData) => {
-        this.setState({ 
-          pokemonName: rawData.name,
-          pokemonWeight: rawData.weight,
-        });
+    // URLs for pokemon information.
+    const pokemonApi = `https://pokeapi.co/api/v2/pokemon/`;
 
-      },
+    // Get the Index out.
+    const pokemonIndex = pokemonApi.split("/")[pokemonApi.split("/").length - 2];
 
-      console.log(pokemonName);
+    const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonIndex}/`;
+    const pokemonSpeciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}/`;
 
-      (error) => {
+    this.setState({ 
+      isLoading: true 
+    })
+
+    fetch(pokemonApi)
+      .then(res => res.json())
+      .then(data => 
         this.setState({
-          isLoaded: true,
-          error
-        });
-      }
-    )
+          pokemons: data.results,
+          isLoading: false,
+      }));
+
+    
   };
 
-
   // Select new Hero card. Set an if else when done, to set default.
-  cardClicked = event => {
-    event.preventDefault(); // Stop the form from submitting.
-    //this.setState({pokemonHeroCard: cardClicked}); // This should add data to the HERO Card.
-    alert("cardClicked !")
+  cardClicked = () => {
+    // this.setState({pokemonHeroCard: cardClicked}); // This should add data to the HERO Card.
+    alert('cardClicked!')
   };
 
   render() {
+    const pokemons = this.state.pokemons;
+    const isLoading = this.state.isLoading;
+    
+    if (isLoading) {
+      return <p>Loading ...</p>;
+    }
 
-        <main>
+    return (
+      <main>
 
-            const { error, isLoaded, results } = this.state;
-              if (error) {
-                return <div>Error: {error.message}</div>;
-              } else if (!isLoaded) {
-                return <div>Loading...</div>;
-              } else {
-                return (
-                  <ul>
-                    {results.map(item => (
-                      <li key={item.name}>
-                        {item.name} {item.price}
-                      </li>
-                    ))}
-                  </ul>
+        <div className="HeroWrapper">
+            <CardHero 
+              key={pokemons.name}
+              data={pokemons}
+            />
+        </div>
 
-                  <div className="PokemonList">
-                    <div className="HeroWrapper">
-                      <CardHero />
-                    </div>
-                  </div>
+        <div>
+          <div className="PokemonList">
+              {pokemons.map(pokemon =>
+                <CardSmall
+                  key={pokemon.name}
+                  data={pokemon}
+                  changePokemonCard={this.changePokemonCard}
+                  cardClicked={this.cardClicked}
+                />
+              )}
+          </div>
+        </div>
 
-                  <div className="PokemonList">
-                    <CardSmall changePokemonCard={this.changePokemonCard} cardClicked={this.cardClicked} /> {/* Send it to next level. */}
-                  </div>
-                );
-
-        </main>
-
+      </main>
+    );
   }
 }
