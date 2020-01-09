@@ -6,115 +6,78 @@ import CardHero from "./CardHero";
 
 export default class Dashboard extends React.Component {
 
-  state = { // This is a property.
-    url: `https://pokeapi.co/api/v2/pokemon/`,
-    pokemon: null, 
-    selectedPokemon: null,
-    name: "",
-    imageUrl: "",
-    imageUrlFront: "",
-    imageUrlBack: "",
-    pokemonIndex: "",
-    types: [],
-    description: "",
-    pokemonHeight: "",
-    pokemonWeight: "",
-    eggGroup: "",
-    abilities: ""
+  constructor(props) { // Runs before the component is loaded.
+    super(props);
+
+    this.state = {
+      error: null,
+      isLoaded: false,
+      results: []
+    };
+
+    // This binding is necessary to make this work in the callback.
+    this.cardClicked = this.cardClicked.bind(this);
   };
 
-  // This gets data from CardSmall Clicked card to pokemon and prints Changing card !
-  createPokemon = selectedPokemon => {
+  componentDidMount() { // Runs after component had loaded.
 
-    // 1. Take a copy of the existing state
-    const pokemon = { ...this.state.pokemonMultiSelected };
-    // 2. Add our new
-    pokemon[`selectedPokemon${Date.now()}`] = selectedPokemon;
-
-    this.setState({
-      pokemon: pokemon
-
-    console.log("Changing card !");
-    });
-
+    fetch('https://pokeapi.co/api/v2/pokemon/')
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            results: result.results
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
   };
 
-  /* NEED TO REWRITE THIS to work with FETCH
 
-  async componentDidMount() { // Runs after component is loaded.
-    const res = await axios.get(this.state.url);
-    this.setState({ pokemon: res.data["results"] }); // Get the full array and save it in the pokemon variable. *
+  // Select new Hero card. Set an if else when done, to set default.
+  cardClicked = event => {
+    event.preventDefault(); // Stop the form from submitting.
+    //this.setState({pokemonHeroCard: cardClicked}); // This should add data to the HERO Card.
+    alert("cardClicked !")
+  };
 
   render() {
-    return (
-      
-      <React.Fragment>  { /* Makes a temp div and removes it after render. */ }
 
         <main>
 
-          {/* This is the HERO section. It should just post ONE card, the selected card if anyone is selected. */}
+            const { error, isLoaded, results } = this.state;
+              if (error) {
+                return <div>Error: {error.message}</div>;
+              } else if (!isLoaded) {
+                return <div>Loading...</div>;
+              } else {
+                return (
+                  <ul>
+                    {results.map(item => (
+                      <li key={item.name}>
+                        {item.name} {item.price}
+                      </li>
+                    ))}
+                  </ul>
 
-          <React.Fragment>
-              {this.state.pokemonSelected ? (
-              <div className="PokemonList">
-            <div className="HeroWrapper">
+                  <div className="PokemonList">
+                    <div className="HeroWrapper">
+                      <CardHero />
+                    </div>
+                  </div>
 
-              <CardHero />
-              
-            </div>
-            {this.state.pokemonSelected.map((pokemonSelected)) => (  
-                  <PokemonCard
-                    key={pokemonSelected.name}
-                    name={pokemonSelected.name}
-                    url={pokemonSelected.url}
-                    image={pokemonSelected.image}
-                    image={pokemonSelected.moves}
-                  />
-                ))}
-
-              </div>
-
-              ) : ( { /* Comment, this is an (IF) : (Else) */ }
-              <h1> Loading pokemons...</h1>
-              )}
-
-          </React.Fragment>
-
-
-
-
-          {/* This is the CARD section. This should list all the cards and also under this there should be a "load more" button.*/}
-
-          <React.Fragment>
-            {this.state.pokemon ? (
-            <div className="PokemonList">
-              
-              <CardSmall changePokemonCard={this.changePokemonCard} /> {/* Send it to next level. */}
-
-              {this.state.pokemon.map((pokemon)) => (  
-                <PokemonCard
-                  key={pokemon.name}
-                  name={pokemon.name}
-                  url={pokemon.url}
-                  image={pokemon.image}
-                  image={pokemon.moves}
-                />
-              ))}
-
-            </div>
-
-            ) : ( { /* Comment, this is an (IF) : (Else) */ }
-            <h1> Loading pokemons...</h1>
-            )}
-
-          </React.Fragment>
-            
-          </div>
+                  <div className="PokemonList">
+                    <CardSmall changePokemonCard={this.changePokemonCard} cardClicked={this.cardClicked} /> {/* Send it to next level. */}
+                  </div>
+                );
 
         </main>
 
-      </React.Fragment>
-
-    );
   }
 }
