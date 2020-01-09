@@ -1,6 +1,5 @@
 import React from "react";
 import { render } from "react-dom";
-import axios from "axios";
 
 export default class CardSmall extends React.Component {
 
@@ -8,12 +7,26 @@ export default class CardSmall extends React.Component {
     super(props);
 
     // This binding is necessary to make this work in the callback.
-    this.cardClicked = this.cardClicked.bind(this);''
+    this.cardClicked = this.cardClicked.bind(this);
   }
 
   // How to get this to get the data from the clicked card? And the send it to changePokemonCard.
   cardClicked() {
-    alert('Change the Pokemon !'); 
+    
+    alert('Change the Pokemon !');
+    
+      // This is the PokemonChange.
+      createPokemon = event => {
+        // Stop the form from submitting
+        event.preventDefault();
+          const selectedPokemon = {
+            name: this.xxx,
+            url: this.xxx,
+            abilities: this.xxx
+          };
+        this.props.changePokemon(selectedPokemon);
+      };
+
   }
 
   // Send the selected data to the Hero Card. Need an event?

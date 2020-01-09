@@ -8,8 +8,8 @@ export default class Dashboard extends React.Component {
 
   state = { // This is a property.
     url: `https://pokeapi.co/api/v2/pokemon/`,
-    pokemon: null,
-    pokemonSelected: null,
+    pokemon: null, 
+    selectedPokemon: null,
     name: "",
     imageUrl: "",
     imageUrlFront: "",
@@ -23,17 +23,27 @@ export default class Dashboard extends React.Component {
     abilities: ""
   };
 
+  // This gets data from CardSmall Clicked card to pokemon and prints Changing card !
+  changePokemon = selectedPokemon => {
+
+    // 1. Take a copy of the existing state
+    const pokemon = { ...this.state.pokemonMultiSelected };
+    // 2. Add our new
+    pokemon[`selectedPokemon${Date.now()}`] = selectedPokemon;
+
+    this.setState({
+      pokemon: pokemon
+
+    console.log("Changing card !");
+    });
+
+  };
 
   /* NEED TO REWRITE THIS to work with FETCH
-   
+
   async componentDidMount() { // Runs after component is loaded.
     const res = await axios.get(this.state.url);
-    this.setState({ pokemon: res.data["results"] }); // Get the full array and save it in the pokemon variable. */
-  
-  // This gets data from CardSmall Clicked card to pokemon and prints Changing card !
-  changePokemonCard = pokemonSelected => {
-    console.log("Changing card !");
-  };
+    this.setState({ pokemon: res.data["results"] }); // Get the full array and save it in the pokemon variable. *
 
   render() {
     return (
@@ -48,7 +58,9 @@ export default class Dashboard extends React.Component {
               {this.state.pokemonSelected ? (
               <div className="PokemonList">
             <div className="HeroWrapper">
+
               <CardHero />
+              
             </div>
             {this.state.pokemonSelected.map((pokemonSelected)) => (  
                   <PokemonCard
@@ -78,6 +90,7 @@ export default class Dashboard extends React.Component {
             <div className="PokemonList">
               
               <CardSmall changePokemonCard={this.changePokemonCard} /> {/* Send it to next level. */}
+
               {this.state.pokemon.map((pokemon)) => (  
                 <PokemonCard
                   key={pokemon.name}
