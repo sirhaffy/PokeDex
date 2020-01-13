@@ -1,84 +1,66 @@
-import React, { Component } from 'react';
-import CardSmall from "./CardSmall";
-import CardHero from "./CardHero";
+import React, { Component } from "react";
+//import axios from "axios";
+import PokemonCard from "./pokemonCard";
+import PokemonHero from "./pokemonHero";
 
-export default class Dashboard extends Component {
-  constructor(props) { 
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      pokemons: [],
-    };
-
-    // This binding is necessary to make this work in the callback.
-    this.cardClicked = this.cardClicked.bind(this);
+export default class PokemonList extends Component {
+  state = {
+    pokemon: [],
+    selectedPokemon: null
   };
 
-  componentDidMount() {
+  handleClick(evt, url) {
+    evt.preventDefault();
+    this.setState({ selectedPokemon: null }, () => {
+      this.setState({ selectedPokemon: url });
+    });
+    console.log(url);
+  }
 
-    // URLs for pokemon information.
-    const pokemonApi = `https://pokeapi.co/api/v2/pokemon/`;
+  // Fetch data from server.
+  async componentDidMount() {
+    const urlPokemon = "https://pokeapi.co/api/v2/pokemon/";
 
-    // Get the Index out.
-    const pokemonIndex = pokemonApi.split("/")[pokemonApi.split("/").length - 2];
-
-    const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonIndex}/`;
-    const pokemonSpeciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}/`;
-
-    this.setState({ 
-      isLoading: true 
-    })
-
-    fetch(pokemonApi)
-      .then(res => res.json())
-      .then(data => 
+    fetch(urlPokemon)
+      .then(result => result.json())
+      .then(result => {
         this.setState({
-          pokemons: data.results,
-          isLoading: false,
-      }));
-
-    
-  };
-
-  // Select new Hero card. Set an if else when done, to set default.
-  cardClicked = () => {
-    // this.setState({pokemonHeroCard: cardClicked}); // This should add data to the HERO Card.
-    alert('cardClicked!')
-  };
+          // pokemonList: result, /* Gets an Object. */
+          pokemon: result.results /* <- Gets an Array. */
+        });
+      });
+  }
 
   render() {
-    const pokemons = this.state.pokemons;
-    const isLoading = this.state.isLoading;
-    
-    if (isLoading) {
-      return <p>Loading ...</p>;
-    }
-
     return (
-      <main>
-
-        <div className="HeroWrapper">
-            <CardHero 
-              key={pokemons.name}
-              data={pokemons}
-            />
-        </div>
+      <div className="PokemonMain">
+        {this.state.selectedPokemon ? ( // (IF) : (Else)
+          <div className="HeroWrapper">
+            <PokemonHero url={this.state.selectedPokemon} />
+          </div>
+        ) : (
+          <h3> Click on a green card to show.</h3>
+        )}
 
         <div>
-          <div className="PokemonList">
-              {pokemons.map(pokemon =>
-                <CardSmall
-                  key={pokemon.name}
-                  data={pokemon}
-                  changePokemonCard={this.changePokemonCard}
-                  cardClicked={this.cardClicked}
-                />
-              )}
-          </div>
+          <React.Fragment>
+            {this.state.pokemon ? (
+              <div className="PokemonList">
+                {this.state.pokemon.map(pokemon => (
+                  <PokemonCard
+                    key={pokemon.name}
+                    name={pokemon.name}
+                    url={pokemon.url}
+                    handleEvent={evt => this.handleClick(evt, pokemon.url)}
+                  />
+                ))}
+              </div>
+            ) : (
+              <h1> Loading pokemons...</h1>
+            )}
+          </React.Fragment>
         </div>
-
-      </main>
+      </div>
     );
   }
 }

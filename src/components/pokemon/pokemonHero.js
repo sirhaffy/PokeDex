@@ -1,6 +1,7 @@
-import React from "react";
-import { render } from "react-dom";
+import React, { Component } from "react";
 import axios from "axios";
+import { Abilities } from "../../util/Abilities";
+import { Types } from "../../util/Types";
 
 export default class PokemonHero extends Component {
   state = {
@@ -16,17 +17,17 @@ export default class PokemonHero extends Component {
   };
 
   async componentDidMount() {
-    const url = `https://pokeapi.co/api/v2/pokemon/1/`;
+    // Should show where I am at.
+    const url = this.props.url;
 
     // Get the Index out.
     const pokemonIndex = url.split("/")[url.split("/").length - 2];
 
     // URLs for pokemon information.
-    const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonIndex}/`;
     const pokemonSpeciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}/`;
 
     // Get the info.
-    const pokemonRes = await axios.get(pokemonUrl);
+    const pokemonRes = await axios.get(url);
 
     const name = pokemonRes.data.name;
 
@@ -41,28 +42,11 @@ export default class PokemonHero extends Component {
     const weight = Math.round(pokemonRes.data.weight / 10);
 
     // Types
-    const types = pokemonRes.data.types
-      .map(type => {
-        return type.type.name
-          .toLowerCase()
-          .split("-")
-          .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-          .join(" ");
-      })
-      .join(", ");
+    const types = Types(pokemonRes.data.types);
 
-    // Abilities
-    const abilities = pokemonRes.data.abilities
-      .map(ability => {
-        return ability.ability.name
-          .toLowerCase()
-          .split("-")
-          .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-          .join(" ");
-      })
-      .join(", ");
+    const abilities = Abilities(pokemonRes.data.abilities);
 
-    // Get desciption, english  only.
+    // Get pokemon english desciption only.
     await axios.get(pokemonSpeciesUrl).then(res => {
       let description = "";
       res.data.flavor_text_entries.some(flavor => {

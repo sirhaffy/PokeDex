@@ -1,15 +1,6 @@
-import React from "react";
-import { render } from "react-dom";
+import React from 'react';
 
-export default class CardHero extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(props)
-  }
-
-  render() {
-
-    const { data } = this.props;
+function CardHero (props) { // Functional component
 
     return (
       <div className="PokemonHeroOuter CardShadow">
@@ -23,7 +14,7 @@ export default class CardHero extends React.Component {
             </div>
           </div>
 
-          <h1>Pokemon name</h1>
+          <h1></h1>
 
           <div className="PokemonInfo">
             <p>
@@ -33,10 +24,10 @@ export default class CardHero extends React.Component {
               <b>Weight:</b>  kg
             </p>
             <p>
-              <b>Type:</b> 
+              <b>Type:  </b> 
             </p>
             <p>
-              <b>Abilities:</b> 
+              <b>Abilities: </b> 
             </p>
             <p>
               <b>EggGroups:</b> 
@@ -48,5 +39,6 @@ export default class CardHero extends React.Component {
         </div>
       </div>
     );
-  }
 }
+
+export default CardHero;

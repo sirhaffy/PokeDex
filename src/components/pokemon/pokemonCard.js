@@ -1,6 +1,7 @@
-import React from "react";
-import { render } from "react-dom";
+import React, { Component } from "react";
 import axios from "axios";
+import { Abilities } from "../../util/Abilities";
+import { Types } from "../../util/Types";
 
 export default class PokemonCard extends Component {
   state = {
@@ -18,29 +19,12 @@ export default class PokemonCard extends Component {
     const pokemonIndex = url.split("/")[url.split("/").length - 2];
 
     const pokemonRes = await axios.get(url);
+
     const imageUrl = pokemonRes.data.sprites.front_default;
 
-    // Abilities
-    const abilities = pokemonRes.data.abilities
-      .map(ability => {
-        return ability.ability.name
-          .toLowerCase()
-          .split("-")
-          .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-          .join(" ");
-      })
-      .join(", ");
+    const abilities = Abilities(pokemonRes.data.abilities);
 
-    // Types
-    const types = pokemonRes.data.types
-      .map(type => {
-        return type.type.name
-          .toLowerCase()
-          .split("-")
-          .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-          .join(" ");
-      })
-      .join(", ");
+    const types = Types(pokemonRes.data.types);
 
     this.setState({
       name: name,
@@ -53,7 +37,10 @@ export default class PokemonCard extends Component {
 
   render() {
     return (
-      <div className="PokemonCardOuter CardShadow">
+      <div
+        className="PokemonCardOuter CardShadow"
+        onClick={this.props.handleEvent}
+      >
         <div className="PokemonCardInner">
           <div className="Center Clearfix">
             <div className="ImgContainer">

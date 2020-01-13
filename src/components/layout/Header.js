@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 
-export default function Header(props) { // Add props to stateless functions.
+function Header () { // Functional component
    return (
 
       <header>
@@ -10,3 +10,5 @@ export default function Header(props) { // Add props to stateless functions.
 
    );
 }     
+
+export default Header;

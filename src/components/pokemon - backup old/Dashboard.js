@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component }  from "react";
 import { render } from "react-dom";
 import axios from "axios";
 
 import PokemonCard from "./PokemonCard";
 import PokemonHero from "./PokemonHero";
 
-export default class PokemonList extends Component {
+export default class Dashboard extends Component {
   state = {
     url: `https://pokeapi.co/api/v2/pokemon/`,
     pokemon: null
@@ -19,7 +19,7 @@ export default class PokemonList extends Component {
 
   render() {
     return (
-      <div>
+      <main>
         <div className="HeroWrapper">
           <PokemonHero />
         </div>
@@ -36,7 +36,6 @@ export default class PokemonList extends Component {
                     name={pokemon.name}
                     url={pokemon.url}
                     image={pokemon.image}
-                    image={pokemon.moves}
                   />
                 ))}
               </div>
@@ -45,7 +44,9 @@ export default class PokemonList extends Component {
             )}
           </React.Fragment>
         </div>
-      </div>
+
+        <button>Load more..</button>
+      </main>
     );
   }
 }

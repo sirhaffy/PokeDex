@@ -83,6 +83,42 @@ body {
    outline: none;
  }
 
+button {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 33%, $color-light 100%);
+	background-color:$color-mid;
+	border-radius:6px;
+	border:1px solid $color-light;
+	display:inline-block;
+	cursor:pointer;
+	color: $color-dark;
+	font-family:$font01;
+	font-size:1em;
+	padding:6px 24px;
+	text-decoration:none;
+
+}
+button:hover {
+    background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+    background-color:$color-kick;
+  }
+button:active {
+  position:relative;
+  top:1px;
+}
+
+
+main {
+  button {
+    margin-top: 3em;
+    width: 200px;
+    height: 2.62em;
+    position: relative;
+    left: 50%; /* the left edge of the button is now in the center of the parent element. Now we need to nudge the button back to the left by 50% of the button width to make it center aligned. */
+    margin-left: -100px;
+  }
+}
+
  // Styling.
 
  header {
@@ -110,6 +146,10 @@ footer {
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   grid-gap: 25px;
   justify-items: center;
+  
+  h1 {
+    text-align: center;
+  }
 
  }
 
@@ -156,6 +196,16 @@ footer {
 
   h1 { // Center "Loading pokemons.." text.
     text-align: center;
+  }
+
+
+}
+
+.PokemonMain {
+  h3 {
+    text-align: center;
+    padding-bottom: 2em;
+    padding-top: 2em;
   }
 }
 

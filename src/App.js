@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from "react-dom";
 
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";

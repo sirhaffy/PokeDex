@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 
-export default function Footer(props) {
+function Footer () { // Functional component
    return (
 
       <footer>
@@ -10,3 +10,5 @@ export default function Footer(props) {
 
    );
 }
+
+export default Footer;
