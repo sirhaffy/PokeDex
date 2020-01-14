@@ -80,7 +80,7 @@ export default class PokemonHero extends Component {
 
   render() {
     return (
-      <div className="PokemonHeroOuter CardShadow">
+      <div className="PokemonHeroOuter CardShadow" onClick={this.props.onClose}>
         <div className="PokemonHeroInner">
           <div className="CenterHero Clearfix">
             <div className="ImgContainerHero">

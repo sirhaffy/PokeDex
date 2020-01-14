@@ -35,7 +35,8 @@ p.x-small {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-family: "Merriweather", serif;
   margin: 0.4em 0 0.3em 0;
   font-weight: inherit;
@@ -55,6 +56,12 @@ h3 {
   font-size: 1.363em;
   font-style: normal;
   letter-spacing: 0.01em; }
+
+h4 {
+  font-size: 1.14em;
+  font-style: normal;
+  letter-spacing: 0.01em;
+  font-weight: 200; }
 
 a,
 a:active,
@@ -90,15 +97,6 @@ button:hover {
 button:active {
   position: relative;
   top: 1px; }
-
-main button {
-  margin-top: 3em;
-  width: 200px;
-  height: 2.62em;
-  position: relative;
-  left: 50%;
-  /* the left edge of the button is now in the center of the parent element. Now we need to nudge the button back to the left by 50% of the button width to make it center aligned. */
-  margin-left: -100px; }
 
 header {
   padding-top: 2em;
@@ -157,6 +155,18 @@ footer {
   box-align: center; }
   .HeroWrapper h1 {
     text-align: center; }
+
+.PokemonMain button {
+  margin-top: 3em;
+  width: 200px;
+  height: 2.62em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 2em; }
 
 .PokemonMain h3 {
   text-align: center;
@@ -218,3 +228,28 @@ footer {
 .PokemonHeroInner h3 {
   text-align: center;
   padding-bottom: 1em; }
+
+.CenterContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.popup-content {
+  width: 100% !important;
+  background: none !important;
+  border: none !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }

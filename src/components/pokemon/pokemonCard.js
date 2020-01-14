@@ -39,7 +39,7 @@ export default class PokemonCard extends Component {
     return (
       <div
         className="PokemonCardOuter CardShadow"
-        onClick={this.props.handleEvent}
+        onClick={this.props.openModal}
       >
         <div className="PokemonCardInner">
           <div className="Center Clearfix">

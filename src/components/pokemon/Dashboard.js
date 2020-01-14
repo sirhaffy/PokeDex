@@ -1,57 +1,108 @@
 import React, { Component } from "react";
+import Popup from "reactjs-popup";
 //import axios from "axios";
 import PokemonCard from "./pokemonCard";
 import PokemonHero from "./pokemonHero";
 
-export default class PokemonList extends Component {
-  state = {
-    pokemon: [],
-    selectedPokemon: null
-  };
-
-  handleClick(evt, url) {
-    evt.preventDefault();
-    this.setState({ selectedPokemon: null }, () => {
-      this.setState({ selectedPokemon: url });
-    });
-    console.log(url);
+class PokemonList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pokemonList: [],
+      pokemonObject: {},
+      selectedPokemon: null,
+      url: "https://pokeapi.co/api/v2/pokemon/",
+      open: false
+    };
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-  // Fetch data from server.
   async componentDidMount() {
-    const urlPokemon = "https://pokeapi.co/api/v2/pokemon/";
+    // Fetch data from server.
+    const urlPokemon = this.state.url; //Store default url.
 
     fetch(urlPokemon)
       .then(result => result.json())
       .then(result => {
         this.setState({
-          // pokemonList: result, /* Gets an Object. */
-          pokemon: result.results /* <- Gets an Array. */
+          pokemonObject: result /* Gets an Object. */,
+          pokemonList: result.results /* <- Gets an Array. */
         });
       });
   }
 
+  clickNext = (event, url) => {
+    this.setState({ url: this.state.pokemonObject.next });
+    fetch(this.state.pokemonObject.next)
+      .then(result => result.json())
+      .then(result => {
+        console.log({ result });
+        this.setState({
+          pokemonObject: result /* Gets an Object. */,
+          pokemonList: result.results /* <- Gets an Array. */
+        });
+      });
+  };
+
+  clickPrev = (event, url) => {
+    this.setState({ url: this.state.pokemonObject.previous });
+    fetch(this.state.pokemonObject.previous)
+      .then(result => result.json())
+      .then(result => {
+        console.log({ result });
+        this.setState({
+          pokemonObject: result /* Gets an Object. */,
+          pokemonList: result.results /* <- Gets an Array. */
+        });
+      });
+  };
+
+  openModal(event, url) {
+    
+    event.preventDefault();
+    this.setState({ selectedPokemon: null }, () => {
+      this.setState({ selectedPokemon: url });
+      this.setState({ open: false}, () => {
+        this.setState({ open: true });
+      })
+    });
+  }
+
+  closeModal() {
+    this.setState({ open: false });
+  }
+
+
   render() {
     return (
       <div className="PokemonMain">
-        {this.state.selectedPokemon ? ( // (IF) : (Else)
           <div className="HeroWrapper">
-            <PokemonHero url={this.state.selectedPokemon} />
+          <Popup
+          position="center center"
+              open={this.state.open}
+              closeOnDocument
+            >
+            <a className="close" onClick={this.closeModal}></a>
+              <PokemonHero 
+                url={this.state.selectedPokemon} 
+                onClose={this.closeModal}
+              />
+            </Popup>
+
           </div>
-        ) : (
-          <h3> Click on a green card to show.</h3>
-        )}
 
         <div>
           <React.Fragment>
-            {this.state.pokemon ? (
+            {this.state.pokemonList ? (
               <div className="PokemonList">
-                {this.state.pokemon.map(pokemon => (
+                {this.state.pokemonList.map(pokemon => (
                   <PokemonCard
                     key={pokemon.name}
                     name={pokemon.name}
                     url={pokemon.url}
-                    handleEvent={evt => this.handleClick(evt, pokemon.url)}
+                    handleEvent={event => this.handleClick}
+                    openModal={event => this.openModal(event, pokemon.url)}
                   />
                 ))}
               </div>
@@ -59,8 +110,14 @@ export default class PokemonList extends Component {
               <h1> Loading pokemons...</h1>
             )}
           </React.Fragment>
+          <div className="CenterContent">
+            <button onClick={this.clickPrev}>Prev</button>
+            <button onClick={this.clickNext}>Next</button>
+          </div>
         </div>
       </div>
     );
   }
 }
+
+export default PokemonList;

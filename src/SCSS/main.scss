@@ -51,7 +51,8 @@ body {
  
  h1, 
  h2, 
- h3 {
+ h3,
+ h4 {
    font-family: $font01;
    margin: 0.4em 0 0.3em 0;
    font-weight: inherit;
@@ -75,6 +76,13 @@ body {
    font-style: normal;
    letter-spacing: 0.01em;
  }
+
+ h4 {
+  font-size: 1.14em;
+  font-style: normal;
+  letter-spacing: 0.01em;
+  font-weight: 200;
+}
  
  a,
  a:active,
@@ -105,18 +113,6 @@ button:hover {
 button:active {
   position:relative;
   top:1px;
-}
-
-
-main {
-  button {
-    margin-top: 3em;
-    width: 200px;
-    height: 2.62em;
-    position: relative;
-    left: 50%; /* the left edge of the button is now in the center of the parent element. Now we need to nudge the button back to the left by 50% of the button width to make it center aligned. */
-    margin-left: -100px;
-  }
 }
 
  // Styling.
@@ -202,6 +198,15 @@ footer {
 }
 
 .PokemonMain {
+
+  button {
+    margin-top: 3em;
+    width: 200px;
+    height: 2.62em;
+    display: flex; justify-content: center;
+    margin: 2em;
+  }
+
   h3 {
     text-align: center;
     padding-bottom: 2em;
@@ -285,4 +290,18 @@ footer {
     text-align: center;
     padding-bottom: 1em;
   }
+}
+.CenterContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-content  {
+  width: 100% !important;       //
+  background: none !important;  //Don´t have support yet for CSS, this is an ugly solution.
+  border: none !important;      //
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

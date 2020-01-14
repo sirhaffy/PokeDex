@@ -1,11 +1,11 @@
 import React from "react";
-import { render } from "react-dom";
 
 function Header () { // Functional component
    return (
 
       <header>
-         <h1>Welcome to PokeDex Mini</h1>
+         <h4>Welcome to</h4> 
+         <h1>PokeDex Mini</h1>
       </header>
 
    );
