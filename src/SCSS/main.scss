@@ -124,6 +124,18 @@ button:active {
 
   h1 {
     margin-top: 0;
+    text-shadow:         0px 14px 18px 0px rgba(50, 50, 50, 0.50);
+    // Safari and Chrome
+    -webkit-text-shadow: 0px 14px 18px 0px rgba(50, 50, 50, 0.50);
+     // Firefox
+     -moz-text-shadow:    0px 14px 18px 0px rgba(50, 50, 50, 0.50);
+  }
+  h4 {
+    text-shadow:         0px 14px 18px 0px rgba(50, 50, 50, 0.50);
+    // Safari and Chrome
+    -webkit-text-shadow: 0px 14px 18px 0px rgba(50, 50, 50, 0.50);
+     // Firefox
+     -moz-text-shadow:    0px 14px 18px 0px rgba(50, 50, 50, 0.50);
   }
  }
 
@@ -151,7 +163,7 @@ footer {
 
 .PokemonCardOuter {
   background: $color-white;
-  width: 290px;
+  width: 310px;
   height: 380px;
   padding: 20px;
   border-radius: 15px;
@@ -163,7 +175,7 @@ footer {
 
 .PokemonCardInner {
   background: linear-gradient(135deg, $color-light 30%,#62c499 100%);
-  width: 250px;
+  width: 270px;
   height: 340px;
   padding: 20px;
   border-radius: 15px;
@@ -217,7 +229,7 @@ footer {
 .PokemonHeroOuter {
   background-color: $color-white;
   width: 310px;
-
+  height: 580px;
   padding: 20px;
 
   border-radius: 15px;
@@ -231,6 +243,7 @@ footer {
   background: linear-gradient(135deg,#F2CD48 0%,#FD803F 100%);
 
   width: 270px;
+  height: 540px;
   padding: 20px;
 
   border-radius: 15px;

@@ -103,7 +103,14 @@ header {
   height: 5em;
   text-align: center; }
   header h1 {
-    margin-top: 0; }
+    margin-top: 0;
+    text-shadow: 0px 14px 18px 0px rgba(50, 50, 50, 0.5);
+    -webkit-text-shadow: 0px 14px 18px 0px rgba(50, 50, 50, 0.5);
+    -moz-text-shadow: 0px 14px 18px 0px rgba(50, 50, 50, 0.5); }
+  header h4 {
+    text-shadow: 0px 14px 18px 0px rgba(50, 50, 50, 0.5);
+    -webkit-text-shadow: 0px 14px 18px 0px rgba(50, 50, 50, 0.5);
+    -moz-text-shadow: 0px 14px 18px 0px rgba(50, 50, 50, 0.5); }
 
 footer {
   font-size: 0.8em;
@@ -123,7 +130,7 @@ footer {
 
 .PokemonCardOuter {
   background: #f1f1ed;
-  width: 290px;
+  width: 310px;
   height: 380px;
   padding: 20px;
   border-radius: 15px;
@@ -134,7 +141,7 @@ footer {
   background: -webkit-linear-gradient(315deg, #dfdfd7 30%, #62c499 100%);
   background: -o-linear-gradient(315deg, #dfdfd7 30%, #62c499 100%);
   background: linear-gradient(135deg, #dfdfd7 30%, #62c499 100%);
-  width: 250px;
+  width: 270px;
   height: 340px;
   padding: 20px;
   border-radius: 15px;
@@ -176,6 +183,7 @@ footer {
 .PokemonHeroOuter {
   background-color: #f1f1ed;
   width: 310px;
+  height: 580px;
   padding: 20px;
   border-radius: 15px;
   -webkit-border-radius: 15px;
@@ -186,6 +194,7 @@ footer {
   background: -o-linear-gradient(315deg, #F2CD48 0%, #FD803F 100%);
   background: linear-gradient(135deg, #F2CD48 0%, #FD803F 100%);
   width: 270px;
+  height: 540px;
   padding: 20px;
   border-radius: 15px;
   -webkit-border-radius: 15px;

@@ -59,13 +59,12 @@ class PokemonList extends Component {
   };
 
   openModal(event, url) {
-    
     event.preventDefault();
     this.setState({ selectedPokemon: null }, () => {
       this.setState({ selectedPokemon: url });
-      this.setState({ open: false}, () => {
+      this.setState({ open: false }, () => {
         this.setState({ open: true });
-      })
+      });
     });
   }
 
@@ -73,24 +72,22 @@ class PokemonList extends Component {
     this.setState({ open: false });
   }
 
-
   render() {
     return (
       <div className="PokemonMain">
-          <div className="HeroWrapper">
+        <div className="HeroWrapper">
           <Popup
-          position="center center"
-              open={this.state.open}
-              closeOnDocument
-            >
-            <a className="close" onClick={this.closeModal}></a>
-              <PokemonHero 
-                url={this.state.selectedPokemon} 
-                onClose={this.closeModal}
-              />
-            </Popup>
-
-          </div>
+            position="center center"
+            open={this.state.open}
+            closeOnDocument
+          >
+            <a className="close" onClick={this.closeModal} />
+            <PokemonHero
+              url={this.state.selectedPokemon}
+              onClose={this.closeModal}
+            />
+          </Popup>
+        </div>
 
         <div>
           <React.Fragment>
