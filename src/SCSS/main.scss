@@ -17,10 +17,10 @@ body {
    background: $color-light;
    font-family: $font02;
  }
- 
- p, 
- p.x-small, 
- span, 
+
+ p,
+ p.x-small,
+ span,
  a {
    line-height: 1.2em;
    font-size: 1.03em;
@@ -30,7 +30,7 @@ body {
    word-spacing: 0.1em;
     letter-spacing: 0.01em;
  }
- 
+
  p.small,
  .small,
  .small a {
@@ -42,15 +42,15 @@ body {
    word-spacing: 0.1em;
     letter-spacing: 0.01em;
  }
- 
+
  p.x-small {
    font-size: 0.694em !important;
    font-style: normal;
    letter-spacing: 0.03em;
  }
- 
- h1, 
- h2, 
+
+ h1,
+ h2,
  h3,
  h4 {
    font-family: $font01;
@@ -58,19 +58,19 @@ body {
    font-weight: inherit;
    line-height: 1.2;
  }
- 
+
  h1 {
    font-size: 1.953em;
    font-style: normal;
    letter-spacing: 0.04em;
  }
- 
+
  h2 {
    font-size: 1.563em;
    font-style: normal;
    letter-spacing: 0.02em;
  }
- 
+
  h3 {
    font-size: 1.363em;
    font-style: normal;
@@ -83,7 +83,7 @@ body {
   letter-spacing: 0.01em;
   font-weight: 200;
 }
- 
+
  a,
  a:active,
  a:visited {
@@ -154,7 +154,7 @@ footer {
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   grid-gap: 25px;
   justify-items: center;
-  
+
   h1 {
     text-align: center;
   }
@@ -168,9 +168,9 @@ footer {
   padding: 20px;
   border-radius: 15px;
   // Safari and Chrome
-  -webkit-border-radius: 15px; 
+  -webkit-border-radius: 15px;
   // Firefox
-  -moz-border-radius:    15px; 
+  -moz-border-radius:    15px;
 }
 
 .PokemonCardInner {
@@ -180,9 +180,9 @@ footer {
   padding: 20px;
   border-radius: 15px;
   // Safari and Chrome
-  -webkit-border-radius: 15px; 
+  -webkit-border-radius: 15px;
   // Firefox
-  -moz-border-radius:    15px; 
+  -moz-border-radius:    15px;
 }
 
 .HeroWrapper {
@@ -234,9 +234,9 @@ footer {
 
   border-radius: 15px;
   // Safari and Chrome
-  -webkit-border-radius: 15px; 
+  -webkit-border-radius: 15px;
   // Firefox
-  -moz-border-radius:    15px; 
+  -moz-border-radius:    15px;
 }
 
 .PokemonHeroInner {
@@ -248,9 +248,9 @@ footer {
 
   border-radius: 15px;
   // Safari and Chrome
-  -webkit-border-radius: 15px; 
+  -webkit-border-radius: 15px;
   // Firefox
-  -moz-border-radius:    15px; 
+  -moz-border-radius:    15px;
 }
 
 .CardShadow {
@@ -298,7 +298,7 @@ footer {
 
 .PokemonCardInner,
 .PokemonHeroInner {
-  h1, 
+  h1,
   h3 {
     text-align: center;
     padding-bottom: 1em;

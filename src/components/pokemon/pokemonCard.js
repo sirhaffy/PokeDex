@@ -15,15 +15,10 @@ export default class PokemonCard extends Component {
   async componentDidMount() {
     const name = this.props.name;
     const url = this.props.url;
-
     const pokemonIndex = url.split("/")[url.split("/").length - 2];
-
     const pokemonRes = await axios.get(url);
-
     const imageUrl = pokemonRes.data.sprites.front_default;
-
     const abilities = Abilities(pokemonRes.data.abilities);
-
     const types = Types(pokemonRes.data.types);
 
     this.setState({
