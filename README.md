@@ -1,1 +1,1 @@
-Take two on Pokemon Dex.
+Pokemon Dex.
